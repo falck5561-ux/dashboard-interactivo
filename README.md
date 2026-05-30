@@ -1,16 +1,19 @@
-# React + Vite
+# Dashboard Interactivo Básico en React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es una aplicación de un Dashboard interactivo construido con React, aplicando buenas prácticas de desarrollo, composición de componentes y manejo de estado avanzado.
 
-Currently, two official plugins are available:
+## 🚀 Funcionalidades
+* **Gestión de Usuarios:** Permite alternar entre diferentes perfiles de usuario de forma dinámica.
+* **Tema Claro/Oscuro:** Integración de un *switch* de temas respetando la jerarquía de componentes.
+* **Lista Dinámica Filtrable:** Visualización de actividades recientes con un filtro por categorías.
+* **Contador Interactivo:** Panel de estadísticas con estado local independiente.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🛠️ Arquitectura y Buenas Prácticas Aplicadas
+* **Composición y Separación:** Todo el código está modularizado (Sidebar, Header, Card, paneles). Ningún componente supera las 150 líneas. No existe un `App.jsx` monolítico.
+* **Cero JSX Duplicado:** Uso eficiente del componente contenedor `Card` y mapeo de arrays para listas.
+* **Context API:** Uso de contextos para manejar el estado global, asegurando **0 niveles de *props drilling*** en lugar del límite máximo de 2.
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🏆 Retos Extra Implementados
+1.  **`useMemo`**: Implementado en `ActivityList.jsx` para evitar el recálculo innecesario de la lista de actividades al re-renderizar, optimizando el filtrado.
+2.  **`React.memo`**: Implementado en el componente contenedor `Card.jsx` para prevenir renders innecesarios en elementos puramente visuales del layout.
+3.  **`Custom Hook`**: Implementación de `useDashboard()` para consumir el Context API de manera limpia y semántica.
